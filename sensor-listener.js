@@ -59,7 +59,7 @@ var sensor = connected.then(function(tag) {
 
 sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
-  	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
+  	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
   })
 });
 
@@ -74,3 +74,9 @@ sensor.then(function(tag) {
 // Step 4 (optional): Configure periods for sensor reads.
 //------------------------------------------------------------------------------
 // The registered listeners will be invoked with the specified interval.
+//
+
+sensor.then(function(tag) {
+	  tag.setAccelerometerPeriod(50, log);
+	  tag.setGyroscopePeriod(50,log);
+});
