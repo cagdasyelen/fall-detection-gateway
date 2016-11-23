@@ -60,6 +60,7 @@ var sensor = connected.then(function(tag) {
 sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
   	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
+    writeToFile(x + ","  + y + "," + z);
   })
 });
 
@@ -67,6 +68,7 @@ sensor.then(function(tag) {
 sensor.then(function(tag) {
   tag.on("gyroscopeChange", function(x, y,z) {
   	console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
+    writeToFile("," + x + "," + y + "," + z + "\n");
   })
 });
 
@@ -77,6 +79,18 @@ sensor.then(function(tag) {
 //
 
 sensor.then(function(tag) {
-	  tag.setAccelerometerPeriod(50, log);
-	  tag.setGyroscopePeriod(50,log);
+	  tag.setAccelerometerPeriod(100, log);
+	  tag.setGyroscopePeriod(100,log);
 });
+
+writeToFile = function(line){
+  var fs = require('fs');
+  fs.appendFile("/tmp/data.csv", line, function(err)){
+    if(err){
+      return console.log(err);
+    }
+  }
+
+}
+
+

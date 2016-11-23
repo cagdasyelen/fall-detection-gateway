@@ -12,7 +12,7 @@ router.get('/send', function(req, res, next) {
   res.render('index', { title: 'Express' });
   request({
     url: 'http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000', //URL to hit
-    qs: {to: '5121234567', msg: 'Whatsup Lena??'}, //Query string data
+    qs: {to: '5129658090', msg: 'Whatsup Cagdas??'}, //Query string data
     method: 'POST',
 	}, function(error, response, body){
 	  	if(error) {
