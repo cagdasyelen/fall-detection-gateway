@@ -85,11 +85,11 @@ sensor.then(function(tag) {
 
 writeToFile = function(line){
   var fs = require('fs');
-  fs.appendFile("/tmp/data.csv", line, function(err)){
+  fs.appendFile("/tmp/data.csv", line, function(err){
     if(err){
       return console.log(err);
     }
-  }
+  });
 
 }
 
