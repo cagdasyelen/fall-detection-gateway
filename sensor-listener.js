@@ -116,8 +116,76 @@ writeToFile = function(line){
 
 }
 
-appendRawData = function(data){
+decisionTree = function(data){
+  if(ed['aP2P'] <= 0.941){
+    return 0;
+  }
+  else{
+    if(ed['aAvg'] <= 1.2813){
+      if(ed['gAvg'] <=95.5936){
+        return 1;
+      }
+      else{
+        if(ed['aAvg'] <= 1.2155){
+          if(ed['aStd'] <= 0.6642){
+            if(ed['aAvg'] <= 0.7339):
+              return 2;
+            else:
+              if(ed['aMin'] <= 0.1213):
+                return 1;
+              else:
+                return 2;
+          }
+          else{
+            if(ed['gMax'] <= 367.7342){
+              return 1;
+            }
+            else{
+              return 2;
+            }
+          }
+        }
+        else{
+          return 1;
+        }
+      }
+    }
+    
+    else{
+      if(ed['aMin'] <= 0.0565){
+        if(ed['gAvg'] <= 257.9375){
+          if(ed['gMin'] <= 3.6016){
+            return 2;
+          }
+          else{
+            return 1;
+          }
+        }
+        else{
+          if(ed['gStd'] <= 133.4024){
+            return 2;
+          }
+          else{
+            return 3;
+          }
+        }
+      }
+      else{
+        if(ed['aMin'] <= 0.1215){
+          if(ed['gAvg'] <= 187.825){
+            return 2;
+          }
+          else{
+            return 3;
+          }
+        }
+        else{
+          return 3;
+        }
+      }
+    }
 
+  }
 }
 
 
