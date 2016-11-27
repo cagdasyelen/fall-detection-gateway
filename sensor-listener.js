@@ -22,6 +22,10 @@ var log = function(text) {
   }
 }
 
+
+
+
+
 //==============================================================================
 // Step 1: Connect to sensortag device.
 //------------------------------------------------------------------------------
@@ -57,18 +61,30 @@ var sensor = connected.then(function(tag) {
 // You can register multiple listeners per sensor.
 //
 
+
+var rawArr = []
+var temp = []
+
+
 sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
-  	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
-    writeToFile(x + ","  + y + "," + z);
+  	//console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
+    //writeToFile(x + ","  + y + "," + z);
+    temp.push(x);
+    temp.push(y);
+    temp.push(z);
   })
 });
 
 
 sensor.then(function(tag) {
   tag.on("gyroscopeChange", function(x, y,z) {
-  	console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
-    writeToFile("," + x + "," + y + "," + z + "\n");
+  	//console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
+    //writeToFile("," + x + "," + y + "," + z + "\n");
+    temp.push(x);
+    temp.push(y);
+    temp.push(z);
+    console.log(temp);
   })
 });
 
@@ -90,6 +106,10 @@ writeToFile = function(line){
       return console.log(err);
     }
   });
+
+}
+
+appendRawData = function(data){
 
 }
 
