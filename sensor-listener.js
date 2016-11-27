@@ -70,6 +70,10 @@ sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
   	//console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
     //writeToFile(x + ","  + y + "," + z);
+    console.log(rawArr.length + "\n"); 
+    if(rawArr.length > 29){
+    	rawArr.shift();
+    }
     temp.push(x);
     temp.push(y);
     temp.push(z);
@@ -84,7 +88,10 @@ sensor.then(function(tag) {
     temp.push(x);
     temp.push(y);
     temp.push(z);
-    console.log(temp);
+    
+    temp = [];
+    rawArr.push(temp);
+
   })
 });
 
