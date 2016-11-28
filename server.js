@@ -11,8 +11,8 @@ var server = http.createServer(function (request, response) {
 server.listen(8000,function(){
 	server.get
 	request({
-    	url: 'http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000', //URL to hit
-    	qs: {to: '5126699419', msg: 'Whatsup Cagdas??'}, //Query string data
+    	url: 'http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000/fall', //URL to hit
+    	qs: {sensor: 'SensorTag2650', severity: '3'}, //Query string data
     	method: 'POST',
 	}, function(error, response, body){
 	    if(error) {

@@ -15,6 +15,7 @@
       Step 4 (optional): Configure sensor update interval
 */
 var SensorTag = require('sensortag');
+var mathjs = require('mathjs');
 
 var log = function(text) {
   if(text) {
@@ -92,6 +93,9 @@ sensor.then(function(tag) {
     temp = [];
     rawArr.push(temp);
 
+    data = mathjs.matrix(rawArr);
+    console.log(data.size());
+
   })
 });
 
@@ -116,7 +120,7 @@ writeToFile = function(line){
 
 }
 
-decisionTree = function(data){
+classifier = function(data){
   if(ed['aP2P'] <= 0.941){
     return 0;
   }
@@ -128,13 +132,16 @@ decisionTree = function(data){
       else{
         if(ed['aAvg'] <= 1.2155){
           if(ed['aStd'] <= 0.6642){
-            if(ed['aAvg'] <= 0.7339):
+            if(ed['aAvg'] <= 0.7339){
               return 2;
-            else:
-              if(ed['aMin'] <= 0.1213):
+            }
+            else{
+              if(ed['aMin'] <= 0.1213){
                 return 1;
-              else:
+              }
+              else{
                 return 2;
+              }
           }
           else{
             if(ed['gMax'] <= 367.7342){
@@ -187,5 +194,7 @@ decisionTree = function(data){
 
   }
 }
+
+
 
 
