@@ -93,8 +93,9 @@ sensor.then(function(tag) {
     temp = [];
     rawArr.push(temp);
 
-    var data = mathjs.matrix(rawArr);
-    console.log(data.size());
+    features = getStatistics(rawArr);
+    console.log("extracted features:");
+    console.log(features);
 
   })
 });
@@ -197,4 +198,39 @@ classifier = function(data){
 
 }
 */
+
+var getStatistics = function(arr){
+  var len = arr.length;
+  var i=0;
+
+  var aMag = [];
+  var gMag = [];
+
+  for(i = 0 ; i < length; i++){
+    aMag.push(Math.sqrt(Math.pow(arr[i][0]) + Math.pow(arr[i][1]) + Math.pow(arr[i][2])));
+    gMag.push(Math.sqrt(Math.pow(arr[i][3]) + Math.pow(arr[i][4]) + Math.pow(arr[i][5])));
+  }
+
+
+  var aAvg =mathjs.mean(aMag);;
+  var aMax = mathjs.max(aMag);;
+  var aMin = mathjs.min(aMag);;
+  var aP2P = aMax - aMin;
+  var aStd = mathjs.std(aMag);
+  var gAvg = mathjs.mean(gMag);
+  var gMax =mathjs.max(gMag);
+  var gMin =mathjs.min(gMag);
+  var gP2P = gMax - gMin;
+  var gStd = mathjs.std(gMag);
+
+
+  return [aAvg, aMax, aMin, aP2P, aStd, gAvg, gMax, gMin, gP2P, gStd];
+
+
+}
+
+
+
+
+
 
