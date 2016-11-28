@@ -93,7 +93,7 @@ sensor.then(function(tag) {
     temp = [];
     rawArr.push(temp);
 
-    data = mathjs.matrix(rawArr);
+    var data = mathjs.matrix(rawArr);
     console.log(data.size());
 
   })
@@ -119,7 +119,7 @@ writeToFile = function(line){
   });
 
 }
-
+/*
 classifier = function(data){
   if(ed['aP2P'] <= 0.941){
     return 0;
@@ -195,6 +195,6 @@ classifier = function(data){
   }
 }
 
-
-
+}
+*/
 
