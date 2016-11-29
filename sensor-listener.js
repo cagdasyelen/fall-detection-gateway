@@ -41,7 +41,7 @@ count = 0
 
 sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
-  	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
+  	//console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
     writeToFile(x + ","  + y + "," + z);
 
   })
@@ -50,14 +50,15 @@ sensor.then(function(tag) {
 
 sensor.then(function(tag) {
   tag.on("gyroscopeChange", function(x, y,z) {
-  	console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
+  	//console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
     writeToFile("," + x + "," + y + "," + z + "\n");
     count++;
 
-    if(count == 100){
+    if(count == 103){
       //run bash script
       exec("./send.sh");
       count = 0;
+      console.log("Resetting count");
     }
 
   })
