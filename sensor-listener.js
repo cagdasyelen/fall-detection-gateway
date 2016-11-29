@@ -56,7 +56,7 @@ sensor.then(function(tag) {
 
     if(count == 100){
       //run bash script
-      exec(mv /tmp/data.csv /tmp/data2.csv);
+      exec("./send.sh");
       count = 0;
     }
 
