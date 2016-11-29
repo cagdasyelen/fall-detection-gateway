@@ -9,6 +9,7 @@ var server = http.createServer(function (request, response) {
 
 // Listen on port 8000, IP defaults to 127.0.0.1
 server.listen(8000,function(){
+
 	server.get
 	request({
     	url: 'http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000/fall', //URL to hit
@@ -21,8 +22,12 @@ server.listen(8000,function(){
 	        console.log(response.statusCode, body);
 	    }
 	});
+
 });
 
 
 //Put a friendly message on the terminal
 console.log("Server running at http://127.0.0.1:8000/");
+
+
+
