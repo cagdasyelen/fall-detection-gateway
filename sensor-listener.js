@@ -1,6 +1,6 @@
 
 var SensorTag = require('sensortag');
-var mathjs = require('mathjs');
+var exec = require('child_process').exec;
 
 var log = function(text) {
   if(text) {
@@ -36,6 +36,9 @@ var sensor = connected.then(function(tag) {
 // Step 3: Register listeners on the sensor.
 //------------------------------------------------------------------------------
 
+
+count = 0
+
 sensor.then(function(tag) {
   tag.on("accelerometerChange", function(x, y,z) {
   	console.log("Acc data: (x, y, z) = (" + x + ", " + y + ", " + z + " )"  + "Time: "+ Date.now());
@@ -49,6 +52,13 @@ sensor.then(function(tag) {
   tag.on("gyroscopeChange", function(x, y,z) {
   	console.log("Gyro  data: (x, y, z) = (" + x + ", " + y + ", " + z + " )" );
     writeToFile("," + x + "," + y + "," + z + "\n");
+    count++;
+
+    if(count == 100){
+      //run bash script
+      exec(mv /tmp/data.csv /tmp/data2.csv);
+      count = 0;
+    }
 
   })
 });
