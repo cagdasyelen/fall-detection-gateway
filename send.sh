@@ -42,14 +42,14 @@ echo "$(cat $TEMP)" >> /tmp/send.csv
 
 #send the data over http
 curl -X POST -F "sampleFile=@/tmp/send.csv" http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000/upload
-
+echo "File uploaded!!"
 
 
 
 
 rm -rf $TEMP
-#rm -rf $DATA
-
+rm -rf $DATA
+rm -rf /tmp/send.csv
 
 
 

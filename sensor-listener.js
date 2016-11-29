@@ -58,7 +58,8 @@ sensor.then(function(tag) {
       //run bash script
       exec("./send.sh");
       count = 0;
-      console.log("Resetting count");
+      console.log("Resetting count\n");
+      console.log("Data file sent to the server!\n");
     }
 
   })
