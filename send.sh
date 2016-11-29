@@ -40,6 +40,12 @@ mv /tmp/foo $TEMP
 
 echo "$(cat $TEMP)" >> /tmp/send.csv
 
+#send the data over http
+curl -X POST -F "sampleFile=@/tmp/send.csv" http://ec2-54-212-222-6.us-west-2.compute.amazonaws.com:3000/upload
+
+
+
+
 
 rm -rf $TEMP
 #rm -rf $DATA
